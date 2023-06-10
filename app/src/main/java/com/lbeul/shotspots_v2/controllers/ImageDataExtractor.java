@@ -1,6 +1,6 @@
 package com.lbeul.shotspots_v2.controllers;
 
-import com.lbeul.shotspots_v2.models.ImageData;
+import com.lbeul.shotspots_v2.models.ImageDataImpl;
 
 import java.nio.file.Path;
 
@@ -11,5 +11,5 @@ public interface ImageDataExtractor {
      * @param path the path to the file to be analyzed
      * @return ImageData of the analyzed file
      */
-    public ImageData extractDataFromFile(Path path);
+    public ImageDataImpl extractDataFromImage(Path path);
 }
