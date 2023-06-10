@@ -8,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.preference.PreferenceManager;
 
+import com.lbeul.shotspots_v2.controllers.ImageData;
+import com.lbeul.shotspots_v2.controllers.ImageDataExtractor;
+import com.lbeul.shotspots_v2.models.ImageDataExtractorImpl;
+import com.lbeul.shotspots_v2.models.ImageDataImpl;
 import com.lbeul.shotspots_v2.view.locations.LocationsActivity;
 import com.lbeul.shotspots_v2.R;
 import com.lbeul.shotspots_v2.databinding.ActivityMapBinding;
@@ -21,6 +25,8 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +54,10 @@ public class MapActivity extends AppCompatActivity {
         locationsButton = findViewById(R.id.location_button);
         locationsButton.setOnClickListener(v -> {
             Intent i = new Intent(MapActivity.this, LocationsActivity.class);
+            System.out.println("click");
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                ImageData iData = new ImageDataExtractorImpl().extractDataFromImage(Paths.get("test-res/test.jpg"));
+            }
             startActivity(i);
         });
 

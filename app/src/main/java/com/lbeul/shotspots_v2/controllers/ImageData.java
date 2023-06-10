@@ -17,6 +17,31 @@ public interface ImageData {
     String toString();
 
     /**
+     * Set the geo coordinates and GeoPoint of image
+     * @param longitude double longitude
+     * @param latitude double latitude
+     */
+    void setLocation(double longitude, double latitude);
+
+    /**
+     * Set timestamp of image creation
+     * @param creationTimeStamp Date of creation
+     */
+    void setCreationTimeStamp(Date creationTimeStamp);
+
+    /**
+     * Set camera manufacturer of camera that took the image
+     * @param cameraManufacturer String camera manufacturer
+     */
+    void setCameraManufacturer(String cameraManufacturer);
+
+    /**
+     * Set camera model of camera that took the image
+     * @param cameraModel String camera model
+     */
+    void setCameraModel(String cameraModel);
+
+    /**
      * Return geoPoint
      * @return GeoPoint
      */
