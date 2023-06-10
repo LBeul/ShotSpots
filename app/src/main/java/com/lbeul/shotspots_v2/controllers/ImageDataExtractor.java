@@ -6,10 +6,8 @@ public interface ImageDataExtractor {
 
     /**
      * Extract the metadata from a given file
-     *
-     * @param path the path to the file to be analyzed
      * @return ImageData of the analyzed file
-     * @throws IllegalArgumentException if there is no image at path
+     * @throws RuntimeException if there is no image at path, no geo location, no meta data
      */
-    public ImageData extractDataFromImage(Path path) throws IllegalArgumentException;
+    public ImageData extractDataFromImage() throws RuntimeException;
 }

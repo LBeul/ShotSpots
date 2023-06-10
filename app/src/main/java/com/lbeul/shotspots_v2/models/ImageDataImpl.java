@@ -93,14 +93,15 @@ public class ImageDataImpl implements ImageData {
                 .append(System.lineSeparator());
 
         // location
-        sb.append("Location: ").append(this.longitude).append(this.latitude)
+        sb.append("Location: ").append(this.longitude).append(" - ").append(this.latitude)
                 .append(System.lineSeparator());
 
         // details
-        sb.append(cameraManufacturer).append(cameraModel).append(System.lineSeparator());
+        sb.append(cameraManufacturer).append(System.lineSeparator());
+        sb.append(cameraModel).append(System.lineSeparator());
 
         // creation date
-        sb.append(creationTimeStamp.toString()).append(System.lineSeparator());
+        sb.append(creationTimeStamp);
 
         return sb.toString();
     }

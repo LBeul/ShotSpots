@@ -54,10 +54,16 @@ public class MapActivity extends AppCompatActivity {
         locationsButton = findViewById(R.id.location_button);
         locationsButton.setOnClickListener(v -> {
             Intent i = new Intent(MapActivity.this, LocationsActivity.class);
-            System.out.println("click");
+            // TEST IMAGE DATA
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                ImageData iData = new ImageDataExtractorImpl().extractDataFromImage(Paths.get("test-res/test.jpg"));
+                try {
+                    ImageData iData = new ImageDataExtractorImpl(Paths.get("test.jpg"), getApplicationContext()).extractDataFromImage();
+                    ImageData iData2 = new ImageDataExtractorImpl(Paths.get("test2.jpg"), getApplicationContext()).extractDataFromImage();
+                } catch (RuntimeException e) {
+                    System.out.println(e.getMessage());
+                }
             }
+            // TEST IMAGE DATA END
             startActivity(i);
         });
 

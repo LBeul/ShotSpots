@@ -1,55 +1,115 @@
 package com.lbeul.shotspots_v2.models;
 
+import android.content.Context;
 import android.os.Build;
+import android.os.Environment;
 
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;
+import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
+import com.drew.metadata.Tag;
+import com.drew.metadata.exif.ExifSubIFDDescriptor;
 import com.drew.metadata.exif.ExifSubIFDDirectory;
+import com.drew.metadata.exif.GpsDirectory;
+import com.j256.ormlite.field.types.EnumIntegerType;
 import com.lbeul.shotspots_v2.controllers.ImageData;
 import com.lbeul.shotspots_v2.controllers.ImageDataExtractor;
 
+import org.xml.sax.ContentHandler;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collection;
+import java.util.Locale;
 import java.util.Objects;
 
 public class ImageDataExtractorImpl implements ImageDataExtractor {
 
+    private final Path imagePath;
+    private final Context context;
+
+    public ImageDataExtractorImpl(Path imagePath, Context context) {
+        this.imagePath = imagePath;
+        this.context = context;
+    }
+
     @Override
-    public ImageData extractDataFromImage(Path path) throws IllegalArgumentException {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            System.out.println("beginning extraction of: " + path.toAbsolutePath().toString());
+    public ImageData extractDataFromImage() throws RuntimeException {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            throw new RuntimeException("SDK version is too old to run this.");
         }
-        // extract exif data
+
+        System.out.println("beginning extraction of: " + this.imagePath.toAbsolutePath().toString());
+
+        Objects.requireNonNull(this.imagePath, "Image path must not be null.");
+
+        // get file
+        InputStream is = readInputStreamFromAssets(this.imagePath);
+
+        // get file metadata
+        Metadata metadata = readMetadataFromStream(is);
+
+        // get exif directory
+        ExifSubIFDDirectory exifDirectory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
+
+        // GPS Directory
+        GpsDirectory gpsDirectory = metadata.getFirstDirectoryOfType(GpsDirectory.class);
+
+        if (gpsDirectory == null || !(gpsDirectory.containsTag(GpsDirectory.TAG_LATITUDE)) ||
+                !(gpsDirectory.containsTag(GpsDirectory.TAG_LONGITUDE))) {
+            throw new RuntimeException("No Location data was found.");
+        }
+
+        //debugPrintAllTags(metadata);
+
+        // set values of ImageData
+        ImageData iData = new ImageDataImpl(this.imagePath);
+
+        // set longitude and latitude
+        iData.setLocation(gpsDirectory.getGeoLocation().getLongitude(),
+                gpsDirectory.getGeoLocation().getLatitude());
+
+        // set timestamp
+        iData.setCreationTimeStamp(exifDirectory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL));
+
+        // set camera details
+        iData.setCameraManufacturer(exifDirectory.getString(ExifSubIFDDirectory.TAG_LENS_MAKE));
+        iData.setCameraModel(exifDirectory.getString(ExifSubIFDDirectory.TAG_LENS_MODEL));
+
+        System.out.println(iData);
+
+        return iData;
+    }
+
+    private InputStream readInputStreamFromAssets(Path path) throws RuntimeException {
         try {
-            Objects.requireNonNull(path, "Image path must not be null.");
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                if (!Files.exists(path)) {
-                    throw new IllegalArgumentException("Image file does not exist.");
-                }
-            }
-            // there is an image.
-            ImageData iData = new ImageDataImpl(path);
-
-            Metadata metadata = null;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                metadata = ImageMetadataReader.readMetadata(path.toFile());
-            }
-            assert metadata != null;
-            ExifSubIFDDirectory exifDirectory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
-
-            if (exifDirectory != null) {
-                // set details
-                iData.setCameraModel(exifDirectory.getDescription(ExifSubIFDDirectory.TAG_MODEL));
-            }
-
-            return iData;
+            return context.getAssets().open(path.toString());
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        } catch (ImageProcessingException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("File could not be loaded.");
+        }
+    }
+
+    private Metadata readMetadataFromStream(InputStream is) throws RuntimeException {
+        try {
+            return ImageMetadataReader.readMetadata(is);
+        } catch (ImageProcessingException | IOException e) {
+            throw new RuntimeException("No metadata was found.");
+        }
+    }
+
+    private void debugPrintAllTags(Metadata metadata) {
+        for (Directory directory : metadata.getDirectories()) {
+            for (Tag tag : directory.getTags()) {
+                System.out.println(tag);
+            }
         }
     }
 }
