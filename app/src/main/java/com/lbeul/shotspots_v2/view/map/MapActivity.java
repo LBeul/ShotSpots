@@ -47,6 +47,7 @@ public class MapActivity extends AppCompatActivity {
         binding.locationButton.setOnClickListener(v -> {
             Intent i = new Intent(MapActivity.this, ImageUploadActivity.class);
             startActivity(i);
+            finish();
         });
 
         binding.backToMainButton.setOnClickListener(view -> finish());
