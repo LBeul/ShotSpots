@@ -8,16 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.preference.PreferenceManager;
 
-import com.lbeul.shotspots_v2.controllers.ImageData;
-import com.lbeul.shotspots_v2.controllers.ImageDataExtractor;
-import com.lbeul.shotspots_v2.models.ImageDataExtractorImpl;
-import com.lbeul.shotspots_v2.models.ImageDataImpl;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lbeul.shotspots_v2.view.locations.LocationsActivity;
 import com.lbeul.shotspots_v2.R;
 import com.lbeul.shotspots_v2.databinding.ActivityMapBinding;
-
-import android.widget.Button;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -26,8 +19,6 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +27,6 @@ public class MapActivity extends AppCompatActivity {
     private MapView map = null;
 
     List<Marker> markers = new ArrayList<>();
-
-    FloatingActionButton locationsButton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,19 +41,8 @@ public class MapActivity extends AppCompatActivity {
         initializeMap();
         placeOnMap(new GeoPoint(52.3, 13.4));
 
-        locationsButton = findViewById(R.id.location_button);
-        locationsButton.setOnClickListener(v -> {
+       binding.locationButton.setOnClickListener(v -> {
             Intent i = new Intent(MapActivity.this, LocationsActivity.class);
-            // TEST IMAGE DATA
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                try {
-                    ImageData iData = new ImageDataExtractorImpl(Paths.get("test.jpg"), getApplicationContext()).extractDataFromImage();
-                    ImageData iData2 = new ImageDataExtractorImpl(Paths.get("test2.jpg"), getApplicationContext()).extractDataFromImage();
-                } catch (RuntimeException e) {
-                    System.out.println(e.getMessage());
-                }
-            }
-            // TEST IMAGE DATA END
             startActivity(i);
         });
 
