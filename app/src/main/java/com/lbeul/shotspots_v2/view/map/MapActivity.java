@@ -12,6 +12,7 @@ import com.lbeul.shotspots_v2.controllers.ImageData;
 import com.lbeul.shotspots_v2.controllers.ImageDataExtractor;
 import com.lbeul.shotspots_v2.models.ImageDataExtractorImpl;
 import com.lbeul.shotspots_v2.models.ImageDataImpl;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lbeul.shotspots_v2.view.locations.LocationsActivity;
 import com.lbeul.shotspots_v2.R;
 import com.lbeul.shotspots_v2.databinding.ActivityMapBinding;
@@ -36,7 +37,7 @@ public class MapActivity extends AppCompatActivity {
 
     List<Marker> markers = new ArrayList<>();
 
-    Button locationsButton = null;
+    FloatingActionButton locationsButton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
