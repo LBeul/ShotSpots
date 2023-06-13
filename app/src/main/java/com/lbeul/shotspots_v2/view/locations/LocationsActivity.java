@@ -5,14 +5,9 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Button;
-
-import com.lbeul.shotspots_v2.R;
 import com.lbeul.shotspots_v2.databinding.ActivityLocationsBinding;
-import com.lbeul.shotspots_v2.view.map.MapActivity;
 
 public class LocationsActivity extends AppCompatActivity {
     ActivityLocationsBinding binding;
@@ -28,7 +23,7 @@ public class LocationsActivity extends AppCompatActivity {
                 new ActivityResultCallback<Uri>() {
                     @Override
                     public void onActivityResult(Uri link) {
-                        binding.imageUrl.append(link.toString());
+                        binding.imageUrl.setText(link.toString());
                     }
                 }
         );
