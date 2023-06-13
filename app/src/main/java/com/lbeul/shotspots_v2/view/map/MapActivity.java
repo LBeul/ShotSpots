@@ -8,9 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.preference.PreferenceManager;
 
-import com.lbeul.shotspots_v2.view.locations.LocationsActivity;
-import com.lbeul.shotspots_v2.R;
 import com.lbeul.shotspots_v2.databinding.ActivityMapBinding;
+import com.lbeul.shotspots_v2.models.imageData.ImageData;
+import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
+import com.lbeul.shotspots_v2.models.inMemoryDatabase.ListBasedInMemoryDatabase;
+import com.lbeul.shotspots_v2.view.locations.ImageUploadActivity;
+import com.lbeul.shotspots_v2.R;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -24,7 +27,7 @@ import java.util.List;
 
 public class MapActivity extends AppCompatActivity {
     private ActivityMapBinding binding;
-    private MapView map = null;
+    private MapView map;
 
     List<Marker> markers = new ArrayList<>();
 
@@ -39,12 +42,14 @@ public class MapActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         initializeMap();
-        placeOnMap(new GeoPoint(52.3, 13.4));
+        dropMarkerForEachImage(ListBasedInMemoryDatabase.getInstance());
 
-       binding.locationButton.setOnClickListener(v -> {
-            Intent i = new Intent(MapActivity.this, LocationsActivity.class);
+        binding.locationButton.setOnClickListener(v -> {
+            Intent i = new Intent(MapActivity.this, ImageUploadActivity.class);
             startActivity(i);
         });
+
+        binding.backToMainButton.setOnClickListener(view -> finish());
 
     }
 
@@ -60,13 +65,23 @@ public class MapActivity extends AppCompatActivity {
         mapController.setCenter(startPoint);
     }
 
-    public void placeOnMap(GeoPoint startPoint){
+    public void placeOnMap(GeoPoint startPoint) {
         Marker startMarker = new Marker(map);
         startMarker.setPosition(startPoint);
         startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
 
         markers.add(startMarker);
         map.getOverlays().add(startMarker);
+    }
+
+    public void dropMarkerForEachImage(InMemoryDatabase database){
+        for (ImageData imgData: database.getAllImages()) {
+            Marker marker = new Marker(map);
+            marker.setTitle("Shot on " + imgData.getCameraModel());
+            marker.setPosition(imgData.getGeoPoint());
+            markers.add(marker);
+            map.getOverlays().add(marker);
+        }
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.lbeul.shotspots_v2.controllers.imageDataExtractor;
+package com.lbeul.shotspots_v2.controllers.extraction;
 
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
 

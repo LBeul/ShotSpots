@@ -1,8 +1,6 @@
-package com.lbeul.shotspots_v2.models;
+package com.lbeul.shotspots_v2.models.imageData;
 
 import androidx.annotation.NonNull;
-
-import com.lbeul.shotspots_v2.controllers.ImageData;
 
 import org.osmdroid.util.GeoPoint;
 
@@ -11,7 +9,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class ImageDataImpl implements ImageData {
-    private final UUID id;
+    private final UUID id = UUID.randomUUID();
     private final Path imageUri;
     private double longitude;
     private double latitude;
@@ -22,13 +20,11 @@ public class ImageDataImpl implements ImageData {
     private String cameraModel;
 
 
-
     public ImageDataImpl(Path imageUri) {
 
         // perform Data Extraction
         // store data in class somewhere
 
-        this.id = UUID.randomUUID();
         this.imageUri = imageUri;
 
         //this.location = location;
@@ -58,6 +54,12 @@ public class ImageDataImpl implements ImageData {
     }
 
     // getters
+
+    @Override
+    public UUID getId() {
+        return this.id;
+    }
+
     @Override
     public GeoPoint getGeoPoint() {
         return this.geoPoint;

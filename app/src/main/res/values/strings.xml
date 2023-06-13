@@ -8,4 +8,5 @@
     <string name="previous">Previous</string>
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet.</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
