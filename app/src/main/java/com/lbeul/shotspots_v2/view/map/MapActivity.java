@@ -8,12 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.preference.PreferenceManager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lbeul.shotspots_v2.view.locations.LocationsActivity;
 import com.lbeul.shotspots_v2.R;
 import com.lbeul.shotspots_v2.databinding.ActivityMapBinding;
-
-import android.widget.Button;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -31,8 +28,6 @@ public class MapActivity extends AppCompatActivity {
 
     List<Marker> markers = new ArrayList<>();
 
-    FloatingActionButton locationsButton = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +41,7 @@ public class MapActivity extends AppCompatActivity {
         initializeMap();
         placeOnMap(new GeoPoint(52.3, 13.4));
 
-        locationsButton = findViewById(R.id.location_button);
-        locationsButton.setOnClickListener(v -> {
+       binding.locationButton.setOnClickListener(v -> {
             Intent i = new Intent(MapActivity.this, LocationsActivity.class);
             startActivity(i);
         });
