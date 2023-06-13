@@ -2,41 +2,28 @@ package com.lbeul.shotspots_v2.models;
 
 import android.content.Context;
 import android.os.Build;
-import android.os.Environment;
 
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
-import com.drew.metadata.exif.ExifSubIFDDescriptor;
 import com.drew.metadata.exif.ExifSubIFDDirectory;
 import com.drew.metadata.exif.GpsDirectory;
-import com.j256.ormlite.field.types.EnumIntegerType;
 import com.lbeul.shotspots_v2.controllers.ImageData;
 import com.lbeul.shotspots_v2.controllers.ImageDataExtractor;
 
-import org.xml.sax.ContentHandler;
-
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Locale;
 import java.util.Objects;
 
-public class ImageDataExtractorImpl implements ImageDataExtractor {
+public class AssetImageDataExtractor implements ImageDataExtractor {
 
     private final Path imagePath;
     private final Context context;
 
-    public ImageDataExtractorImpl(Path imagePath, Context context) {
+    public AssetImageDataExtractor(Path imagePath, Context context) {
         this.imagePath = imagePath;
         this.context = context;
     }
