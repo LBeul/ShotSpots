@@ -1,6 +1,6 @@
 package com.lbeul.shotspots_v2.controllers;
 
-import com.lbeul.shotspots_v2.models.ImageDataImpl;
+import com.lbeul.shotspots_v2.models.imageData.ImageDataImpl;
 
 import java.nio.file.Path;
 import java.util.List;
