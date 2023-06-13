@@ -1,4 +1,4 @@
-package com.lbeul.shotspots_v2.controllers;
+package com.lbeul.shotspots_v2.models.imageData;
 
 import androidx.annotation.NonNull;
 
@@ -7,6 +7,7 @@ import org.osmdroid.util.GeoPoint;
 import java.sql.Struct;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.UUID;
 
 public interface ImageData {
     /**
@@ -40,6 +41,12 @@ public interface ImageData {
      * @param cameraModel String camera model
      */
     void setCameraModel(String cameraModel);
+
+    /**
+     * Get UUID of imageData object
+     * @return id in UUID format
+     */
+    UUID getId();
 
     /**
      * Return geoPoint

@@ -1,6 +1,6 @@
-package com.lbeul.shotspots_v2.controllers;
+package com.lbeul.shotspots_v2.controllers.extraction;
 
-import java.nio.file.Path;
+import com.lbeul.shotspots_v2.models.imageData.ImageData;
 
 public interface ImageDataExtractor {
 

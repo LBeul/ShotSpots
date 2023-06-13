@@ -1,4 +1,4 @@
-package com.lbeul.shotspots_v2.models;
+package com.lbeul.shotspots_v2.controllers.extraction;
 
 import android.content.Context;
 import android.os.Build;
@@ -10,8 +10,8 @@ import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
 import com.drew.metadata.exif.ExifSubIFDDirectory;
 import com.drew.metadata.exif.GpsDirectory;
-import com.lbeul.shotspots_v2.controllers.ImageData;
-import com.lbeul.shotspots_v2.controllers.ImageDataExtractor;
+import com.lbeul.shotspots_v2.models.imageData.ImageData;
+import com.lbeul.shotspots_v2.models.imageData.ImageDataImpl;
 
 import java.io.IOException;
 import java.io.InputStream;
