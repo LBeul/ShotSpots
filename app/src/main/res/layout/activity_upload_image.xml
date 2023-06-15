@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.locations.ImageUploadActivity">
+    tools:context=".views.locations.ImageUploadActivity">
 
 
     <ImageView
         android:id="@+id/thumbnail"
         android:layout_width="340dp"
         android:layout_height="300dp"
-        android:background="@android:color/darker_gray"
+        android:background="@color/brandLight"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

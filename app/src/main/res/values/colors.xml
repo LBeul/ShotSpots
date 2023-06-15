@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!--  GRAYSCALE  -->
+    <color name="white">#ffffff</color>
+    <color name="grayLightest">#f9faf8</color>
+    <color name="grayLighter">#e5e6e4</color>
+    <color name="grayLight">#d1d2d0</color>
+    <color name="gray">#bfbfbe</color>
+    <color name="grayDark">#979896</color>
+    <color name="grayDarker">#6f706f</color>
+    <color name="grayDarkest">#494948</color>
+    <color name="black">#212220</color>
+    <!--  BRAND COLORS  -->
+    <color name="brandLight">#e3f7cc</color>
+    <color name="brand"> #7bdb1f</color>
+    <color name="brandDark">#40681c</color>
 </resources>

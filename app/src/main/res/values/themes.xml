@@ -2,7 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Shotspots_v2" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/brand</item>
+        <item name="android:textColor">@color/brandDark</item>
+        <item name="backgroundColor">@color/grayLightest</item>
     </style>
 
     <style name="Theme.Shotspots_v2" parent="Base.Theme.Shotspots_v2" />

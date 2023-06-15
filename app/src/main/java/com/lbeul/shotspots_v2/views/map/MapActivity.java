@@ -1,4 +1,4 @@
-package com.lbeul.shotspots_v2.view.map;
+package com.lbeul.shotspots_v2.views.map;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import com.lbeul.shotspots_v2.databinding.ActivityMapBinding;
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.ListBasedInMemoryDatabase;
-import com.lbeul.shotspots_v2.view.locations.ImageUploadActivity;
+import com.lbeul.shotspots_v2.views.locations.ImageUploadActivity;
 import com.lbeul.shotspots_v2.R;
 
 import org.osmdroid.api.IMapController;

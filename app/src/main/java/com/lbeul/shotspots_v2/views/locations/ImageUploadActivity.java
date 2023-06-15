@@ -1,4 +1,4 @@
-package com.lbeul.shotspots_v2.view.locations;
+package com.lbeul.shotspots_v2.views.locations;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;

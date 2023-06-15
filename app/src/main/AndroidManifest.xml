@@ -30,10 +30,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.locations.ImageUploadActivity"
+            android:name=".views.locations.ImageUploadActivity"
             android:exported="false" />
         <activity
-            android:name=".view.map.MapActivity"
+            android:name=".views.map.MapActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Shotspots_v2" >
