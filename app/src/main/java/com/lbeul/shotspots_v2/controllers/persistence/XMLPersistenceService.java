@@ -1,4 +1,4 @@
-package com.lbeul.shotspots_v2.controllers.persistency;
+package com.lbeul.shotspots_v2.controllers.persistence;
 
 import com.lbeul.shotspots_v2.models.imageData.ImageDataImpl;
 
