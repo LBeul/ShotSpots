@@ -1,7 +1,5 @@
 package com.lbeul.shotspots_v2.models.imageData;
 
-import android.net.Uri;
-
 import androidx.annotation.NonNull;
 
 import org.osmdroid.util.GeoPoint;
