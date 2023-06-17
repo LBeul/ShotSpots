@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:width="150dp"
-        android:text="Upload"
+        android:text="Upload Image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -43,14 +43,25 @@
 
     <!--  TODO: Only for debugging, remove when handed in!  -->
     <Button
-        android:id="@+id/logDB"
+        android:id="@+id/saveDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:width="150dp"
-        android:text="Log DB"
+        android:text="Save DB"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/goToMapView" />
+
+    <Button
+        android:id="@+id/loadDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:width="150dp"
+        android:text="Load DB"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/saveDB" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

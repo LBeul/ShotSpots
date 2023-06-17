@@ -11,7 +11,7 @@ public interface InMemoryDatabase {
      * Populates the database with an existing list of seed data
      * @param initialData the existing db image to replicate
      */
-    public void seed(List<ImageData> initialData);
+    public void seed(List<ImageData> initialData) throws DatabaseException;
 
     /**
      * Adds a new ImageData entity to the collection
@@ -24,7 +24,7 @@ public interface InMemoryDatabase {
      * @param imageId the UUID of the entity that will be deleted
      * @return Object reference to the deleted entity
      */
-    public ImageData removeImageById(UUID imageId);
+    public ImageData removeImageById(UUID imageId) throws DatabaseException;
 
     /**
      * Reads all entities that are currently stored in the collection
