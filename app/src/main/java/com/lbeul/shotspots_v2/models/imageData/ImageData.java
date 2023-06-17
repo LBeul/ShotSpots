@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 
 import org.osmdroid.util.GeoPoint;
 
-import java.sql.Struct;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.UUID;
 

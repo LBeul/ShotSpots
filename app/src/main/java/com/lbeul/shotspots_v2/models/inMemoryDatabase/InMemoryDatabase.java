@@ -8,8 +8,14 @@ import java.util.UUID;
 public interface InMemoryDatabase {
 
     /**
+     * Populates the database with an existing list of seed data
+     * @param initialData the existing db image to replicate
+     */
+    public void seed(List<ImageData> initialData);
+
+    /**
      * Adds a new ImageData entity to the collection
-     * @param imgData the enitity to be stored
+     * @param imgData the entity to be stored
      */
     public void addImageData(ImageData imgData);
 

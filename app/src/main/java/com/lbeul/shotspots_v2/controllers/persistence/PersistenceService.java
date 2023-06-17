@@ -1,22 +1,24 @@
 package com.lbeul.shotspots_v2.controllers.persistence;
 
-import com.lbeul.shotspots_v2.models.imageData.ImageDataImpl;
+import android.net.Uri;
 
-import java.nio.file.Path;
+import com.lbeul.shotspots_v2.models.imageData.ImageData;
+import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
+
 import java.util.List;
 
 public interface PersistenceService {
     /**
-     * Persist existing list of imageData to local filesystem
-     * @param path the path to the destination file
-     * @param imageDataList the list of data to store
+     * Persists existing InMemoryDatabase to local filesystem
+     * @param fileUri the URI of the destination file
+     * @param db the database state to persist in the file system
      */
-    public void persistToFileSystem(Path path, List<ImageDataImpl> imageDataList);
+    public void persistToFileSystem(Uri fileUri, InMemoryDatabase db);
 
     /**
      * Read local file and extract list of image data from it
-     * @param path the path of the source file
+     * @param fileUri the URI of the source file
      * @return List of valid ImageData objects
      */
-    public List<ImageDataImpl> readFromFileSystem(Path path);
+    public List<ImageData> readFromFileSystem(Uri fileUri);
 }

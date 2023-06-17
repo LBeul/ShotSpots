@@ -1,31 +1,30 @@
 package com.lbeul.shotspots_v2.models.imageData;
 
+import android.net.Uri;
+
 import androidx.annotation.NonNull;
 
 import org.osmdroid.util.GeoPoint;
 
-import java.nio.file.Path;
 import java.util.Date;
 import java.util.UUID;
 
 public class ImageDataImpl implements ImageData {
     private final UUID id = UUID.randomUUID();
-    private final Path imageUri;
+    private final String stringifiedImageUri;
     private double longitude;
     private double latitude;
-    private GeoPoint geoPoint;
-    //private final GeoLocation location;
     private Date creationTimeStamp;
     private String cameraManufacturer;
     private String cameraModel;
 
 
-    public ImageDataImpl(Path imageUri) {
+    public ImageDataImpl(String stringifiedImageUri) {
 
         // perform Data Extraction
         // store data in class somewhere
 
-        this.imageUri = imageUri;
+        this.stringifiedImageUri = stringifiedImageUri;
 
         //this.location = location;
     }
@@ -35,7 +34,6 @@ public class ImageDataImpl implements ImageData {
     public void setLocation(double longitude, double latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
-        this.geoPoint = new GeoPoint(latitude, longitude);
     }
 
     @Override
@@ -62,12 +60,12 @@ public class ImageDataImpl implements ImageData {
 
     @Override
     public GeoPoint getGeoPoint() {
-        return this.geoPoint;
+        return new GeoPoint(this.latitude, this.longitude);
     }
 
     @Override
     public String getImageURI() {
-        return this.imageUri.toString();
+        return this.stringifiedImageUri;
     }
 
     @Override
