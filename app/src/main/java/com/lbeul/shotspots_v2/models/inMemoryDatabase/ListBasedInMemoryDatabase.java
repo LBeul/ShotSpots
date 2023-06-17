@@ -1,11 +1,7 @@
 package com.lbeul.shotspots_v2.models.inMemoryDatabase;
-
-import com.lbeul.shotspots_v2.controllers.persistence.JSONPersistenceService;
-import com.lbeul.shotspots_v2.controllers.persistence.PersistenceService;
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -27,14 +23,11 @@ public class ListBasedInMemoryDatabase implements InMemoryDatabase {
     }
 
     @Override
-    public void seed(List<ImageData> initialData) {
+    public void seed(List<ImageData> initialData) throws DatabaseException {
         if(this.imageDataCollection.isEmpty()) {
-            // Deep copy existing db image into local db
-            Collections.copy(initialData, imageDataCollection);
-            System.out.println("Successfully seeded InMemory Database.");
+            imageDataCollection = initialData;
         } else {
-            // FIXME: Create InMemoryDbException for such cases
-            System.err.println("Error: Non-empty database cannot be seeded.");
+            throw new DatabaseException("Non-empty database cannot be seeded.");
         }
     }
 
@@ -44,7 +37,7 @@ public class ListBasedInMemoryDatabase implements InMemoryDatabase {
     }
 
     @Override
-    public ImageData removeImageById(UUID imageId) {
+    public ImageData removeImageById(UUID imageId) throws DatabaseException {
         ImageData imageToBeDeleted = imageDataCollection.stream()
                 .filter(imageData -> imageData.getId().equals(imageId))
                 .findFirst()
@@ -53,8 +46,9 @@ public class ListBasedInMemoryDatabase implements InMemoryDatabase {
             imageDataCollection = imageDataCollection.stream()
                     .filter(img -> !(img.getId().equals(imageId)))
                     .collect(Collectors.toList());
+            return imageToBeDeleted;
         }
-        return imageToBeDeleted;
+        throw new DatabaseException("Image does not exist!");
     }
 
     @Override
@@ -66,17 +60,6 @@ public class ListBasedInMemoryDatabase implements InMemoryDatabase {
     public void logContent() {
         System.out.println("====== START OF DB CONTENT ======");
         imageDataCollection.forEach(imageData -> {
-            System.out.println(imageData.toString());
-            System.out.println("    =========================    ");
-        });
-
-        // FIXME: Persistence tests
-        PersistenceService ps = new JSONPersistenceService();
-        ps.persistToFileSystem(null, this);
-        List<ImageData> deserialized = ps.readFromFileSystem(null);
-
-        System.out.println("====== DESERIALIZED CONTENT ======");
-        deserialized.forEach(imageData -> {
             System.out.println(imageData.toString());
             System.out.println("    =========================    ");
         });
