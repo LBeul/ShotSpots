@@ -58,7 +58,7 @@ public class AssetImageDataExtractor implements ImageDataExtractor {
         //debugPrintAllTags(metadata);
 
         // set values of ImageData
-        ImageData iData = new ImageDataImpl(this.imagePath);
+        ImageData iData = new ImageDataImpl(this.imagePath.toString());
 
         // set longitude and latitude
         iData.setLocation(gpsDirectory.getGeoLocation().getLongitude(),
