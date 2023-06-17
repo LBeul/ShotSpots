@@ -16,7 +16,6 @@ import com.lbeul.shotspots_v2.models.imageData.ImageDataImpl;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Paths;
 import java.util.Objects;
 
 public class NativeImageDataExtractor implements ImageDataExtractor {
@@ -50,7 +49,7 @@ public class NativeImageDataExtractor implements ImageDataExtractor {
             throw new RuntimeException("GPS coordinates are incomplete!");
         }
 
-        ImageData imageData = new ImageDataImpl(Paths.get(imageUri.toString()));
+        ImageData imageData = new ImageDataImpl(imageUri.toString());
         imageData.setLocation(gpsDirectory.getGeoLocation().getLongitude(), gpsDirectory.getGeoLocation().getLatitude());
         imageData.setCreationTimeStamp(exifDirectory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL));
         imageData.setCameraManufacturer(exifDirectory.getString(ExifSubIFDDirectory.TAG_LENS_MAKE));
