@@ -2,6 +2,17 @@
 
 > Course Project for **Mobile Systems & Networks** at HTW Berlin.
 
+## In order to setup...
+
+You have to create a resources file that contains the api key for mapbox under `res/values/api_keys.xml`:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="MAPBOX_API_TOKEN">YOUR_API_KEY</string>
+</resources>
+```
+
 ShotSpots is an Android application that allows users to read metadata from uploaded image files:
 
 ## Backend functionality :nut_and_bolt:
