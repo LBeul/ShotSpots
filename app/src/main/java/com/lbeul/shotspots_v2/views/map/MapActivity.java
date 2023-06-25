@@ -60,8 +60,8 @@ public class MapActivity extends AppCompatActivity {
         map.setMultiTouchControls(true);
         // Create and configure mapController
         IMapController mapController = map.getController();
-        mapController.setZoom(9.5);
-        GeoPoint startPoint = new GeoPoint(52.4, 13.3);
+        mapController.setZoom(7.5);
+        GeoPoint startPoint = new GeoPoint(51.31, 10.48);
         mapController.setCenter(startPoint);
     }
 
