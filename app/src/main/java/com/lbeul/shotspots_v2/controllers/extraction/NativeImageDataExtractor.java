@@ -19,8 +19,8 @@ import java.io.InputStream;
 import java.util.Objects;
 
 public class NativeImageDataExtractor implements ImageDataExtractor {
-    private ContentResolver resolver;
-    private Uri imageUri;
+    private final ContentResolver resolver;
+    private final Uri imageUri;
 
     public NativeImageDataExtractor(AppCompatActivity activity, Uri imageUri) {
         this.resolver = activity.getContentResolver();

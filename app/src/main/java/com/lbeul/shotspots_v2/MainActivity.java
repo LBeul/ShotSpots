@@ -10,7 +10,6 @@ import com.lbeul.shotspots_v2.controllers.persistence.JSONPersistenceService;
 import com.lbeul.shotspots_v2.controllers.persistence.PersistenceService;
 import com.lbeul.shotspots_v2.controllers.persistence.PersistenceServiceException;
 import com.lbeul.shotspots_v2.databinding.ActivityMainBinding;
-import com.lbeul.shotspots_v2.models.imageData.ImageData;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.DatabaseException;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.ListBasedInMemoryDatabase;
@@ -18,10 +17,8 @@ import com.lbeul.shotspots_v2.views.locations.ImageUploadActivity;
 import com.lbeul.shotspots_v2.views.map.MapActivity;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final InMemoryDatabase database = ListBasedInMemoryDatabase.getInstance();

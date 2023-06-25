@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapActivity extends AppCompatActivity {
-    private ActivityMapBinding binding;
     private MapView map;
 
     List<Marker> markers = new ArrayList<>();
@@ -38,7 +37,7 @@ public class MapActivity extends AppCompatActivity {
         Context ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
 
-        binding = ActivityMapBinding.inflate(getLayoutInflater());
+        com.lbeul.shotspots_v2.databinding.ActivityMapBinding binding = ActivityMapBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         initializeMap();
@@ -64,15 +63,6 @@ public class MapActivity extends AppCompatActivity {
         mapController.setZoom(9.5);
         GeoPoint startPoint = new GeoPoint(52.4, 13.3);
         mapController.setCenter(startPoint);
-    }
-
-    public void placeOnMap(GeoPoint startPoint) {
-        Marker startMarker = new Marker(map);
-        startMarker.setPosition(startPoint);
-        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
-
-        markers.add(startMarker);
-        map.getOverlays().add(startMarker);
     }
 
     public void dropMarkerForEachImage(InMemoryDatabase database){

@@ -84,23 +84,12 @@ public class ImageDataImpl implements ImageData {
     @NonNull
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        // path
-        sb.append(this.id.toString()).append(": ").append(this.getImageURI())
-                .append(System.lineSeparator());
-
-        // location
-        sb.append("Location: ").append(this.longitude).append(" - ").append(this.latitude)
-                .append(System.lineSeparator());
-
-        // details
-        sb.append(cameraManufacturer).append(System.lineSeparator());
-        sb.append(cameraModel).append(System.lineSeparator());
-
-        // creation date
-        sb.append(creationTimeStamp);
-
-        return sb.toString();
+        return this.id.toString() + ": " + this.getImageURI() +
+                System.lineSeparator() +
+                "Location: " + this.longitude + " - " + this.latitude +
+                System.lineSeparator() +
+                cameraManufacturer + System.lineSeparator() +
+                cameraModel + System.lineSeparator() +
+                creationTimeStamp;
     }
 }

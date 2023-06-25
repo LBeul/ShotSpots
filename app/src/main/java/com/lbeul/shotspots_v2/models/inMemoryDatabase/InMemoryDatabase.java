@@ -11,29 +11,29 @@ public interface InMemoryDatabase {
      * Populates the database with an existing list of seed data
      * @param initialData the existing db image to replicate
      */
-    public void seed(List<ImageData> initialData) throws DatabaseException;
+    void seed(List<ImageData> initialData) throws DatabaseException;
 
     /**
      * Adds a new ImageData entity to the collection
      * @param imgData the entity to be stored
      */
-    public void addImageData(ImageData imgData);
+    void addImageData(ImageData imgData);
 
     /**
      * Removes a stored ImageData entity from the collection by ID
      * @param imageId the UUID of the entity that will be deleted
      * @return Object reference to the deleted entity
      */
-    public ImageData removeImageById(UUID imageId) throws DatabaseException;
+    ImageData removeImageById(UUID imageId) throws DatabaseException;
 
     /**
      * Reads all entities that are currently stored in the collection
-     * @return
+     * @return the current database content
      */
-    public List<ImageData> getAllImages();
+    List<ImageData> getAllImages();
 
     /**
      * Log current collection content to System.out
      */
-    public void logContent();
+    void logContent();
 }
