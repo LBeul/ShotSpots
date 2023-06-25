@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.lbeul.shotspots_v2.MainActivity;
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
 import com.lbeul.shotspots_v2.controllers.extraction.ImageDataExtractor;
 import com.lbeul.shotspots_v2.databinding.ActivityUploadImageBinding;
@@ -42,9 +43,10 @@ public class ImageUploadActivity extends AppCompatActivity {
         binding.loadImageButton.setOnClickListener(view -> launcher.launch("image/*"));
         binding.extractExifButton.setOnClickListener(view -> {
             ImageData newImageData = extractMetaData(imageUri);
-            Toast successToast = Toast.makeText(this, newImageData.toString(), Toast.LENGTH_LONG);
+            Toast successToast = Toast.makeText(this, "Successfully extracted metadata", Toast.LENGTH_LONG);
             successToast.show();
             db.addImageData(newImageData);
+            binding.extractExifButton.setEnabled(false);
         });
 
     }
