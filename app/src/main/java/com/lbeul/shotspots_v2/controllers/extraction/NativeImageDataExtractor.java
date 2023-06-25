@@ -49,7 +49,7 @@ public class NativeImageDataExtractor implements ImageDataExtractor {
             throw new RuntimeException("GPS coordinates are incomplete!");
         }
 
-        ImageData imageData = new ImageDataImpl(imageUri.toString());
+        ImageData imageData = new ImageDataImpl(imageUri.getPath());
         imageData.setLocation(gpsDirectory.getGeoLocation().getLongitude(), gpsDirectory.getGeoLocation().getLatitude());
         imageData.setCreationTimeStamp(exifDirectory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL));
         imageData.setCameraManufacturer(exifDirectory.getString(ExifSubIFDDirectory.TAG_LENS_MAKE));

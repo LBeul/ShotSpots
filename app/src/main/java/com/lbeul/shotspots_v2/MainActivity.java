@@ -1,10 +1,13 @@
 package com.lbeul.shotspots_v2;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.lbeul.shotspots_v2.controllers.persistence.JSONPersistenceService;
 import com.lbeul.shotspots_v2.controllers.persistence.PersistenceService;
@@ -25,12 +28,19 @@ public class MainActivity extends AppCompatActivity {
     private final String dbDumpFileName = "shotspots_dump.json";
     PersistenceService persistenceService = new JSONPersistenceService();
 
+    LocationRecyclerViewAdapter adapter = new LocationRecyclerViewAdapter(this, database);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadDatabase();
 
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        RecyclerView recycler = binding.locationsRecycler;
+        recycler.setAdapter(adapter);
+        recycler.setLayoutManager(new LinearLayoutManager(this));
 
         binding.goToUpload.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity.this, ImageUploadActivity.class);
@@ -42,13 +52,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.saveDB.setOnClickListener(view -> saveCurrentDatabaseState());
-        binding.loadDB.setOnClickListener(view -> loadDatabase());
     }
 
     private void saveCurrentDatabaseState() {
         try (FileOutputStream fileOut = openFileOutput(dbDumpFileName, MODE_PRIVATE)) {
             persistenceService.persistToFileSystem(fileOut, database);
-            Toast.makeText(this, "Saved to " + getFilesDir() + "/" + dbDumpFileName, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Database saved", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             Toast.makeText(this, "Filesystem access failed - Please restart app!", Toast.LENGTH_LONG).show();
         } catch (PersistenceServiceException e) {
@@ -59,12 +68,19 @@ public class MainActivity extends AppCompatActivity {
     private void loadDatabase() {
         try (FileInputStream fileIn = openFileInput(dbDumpFileName)) {
             database.seed(persistenceService.readFromFileSystem(fileIn));
-            Toast.makeText(this, "Loaded " + getFilesDir() + "/" + dbDumpFileName, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Database loaded", Toast.LENGTH_SHORT).show();
             database.logContent();
         } catch (PersistenceServiceException | DatabaseException e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             Toast.makeText(this, "Filesystem access failed - Please restart app!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 }

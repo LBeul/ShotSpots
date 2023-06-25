@@ -13,55 +13,48 @@
         android:text="ShotSpots"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/goToUpload"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/locationsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="612dp"
+        app:layout_constraintBottom_toTopOf="@id/goToMapView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview" />
 
     <Button
         android:id="@+id/goToUpload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:width="150dp"
+        android:layout_marginBottom="16dp"
         android:text="Upload Image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toLeftOf="@id/goToMapView" />
 
     <Button
         android:id="@+id/goToMapView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:width="150dp"
+        android:layout_marginBottom="16dp"
         android:text="Show Map"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/goToUpload" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/goToUpload"
+        app:layout_constraintRight_toLeftOf="@id/saveDB" />
 
     <!--  TODO: Only for debugging, remove when handed in!  -->
     <Button
         android:id="@+id/saveDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:width="150dp"
+        android:layout_marginBottom="16dp"
         android:text="Save DB"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/goToMapView" />
-
-    <Button
-        android:id="@+id/loadDB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:width="150dp"
-        android:text="Load DB"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/saveDB" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/goToMapView"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
