@@ -12,7 +12,7 @@ import com.lbeul.shotspots_v2.databinding.ActivityMapBinding;
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.ListBasedInMemoryDatabase;
-import com.lbeul.shotspots_v2.views.locations.ImageUploadActivity;
+import com.lbeul.shotspots_v2.views.upload.ImageUploadActivity;
 import com.lbeul.shotspots_v2.R;
 
 import org.osmdroid.api.IMapController;
