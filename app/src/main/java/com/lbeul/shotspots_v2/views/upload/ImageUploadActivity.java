@@ -1,4 +1,4 @@
-package com.lbeul.shotspots_v2.views.locations;
+package com.lbeul.shotspots_v2.views.upload;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.lbeul.shotspots_v2.MainActivity;
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
 import com.lbeul.shotspots_v2.controllers.extraction.ImageDataExtractor;
 import com.lbeul.shotspots_v2.databinding.ActivityUploadImageBinding;

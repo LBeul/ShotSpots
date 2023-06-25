@@ -1,4 +1,4 @@
-package com.lbeul.shotspots_v2;
+package com.lbeul.shotspots_v2.views.main;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,7 +16,7 @@ import com.lbeul.shotspots_v2.databinding.ActivityMainBinding;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.DatabaseException;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.ListBasedInMemoryDatabase;
-import com.lbeul.shotspots_v2.views.locations.ImageUploadActivity;
+import com.lbeul.shotspots_v2.views.upload.ImageUploadActivity;
 import com.lbeul.shotspots_v2.views.map.MapActivity;
 
 import java.io.FileInputStream;
