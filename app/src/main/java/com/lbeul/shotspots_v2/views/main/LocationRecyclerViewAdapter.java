@@ -104,7 +104,6 @@ public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRe
     private URL createMapBoxUrl(double lat, double lon) throws MalformedURLException {
         String apiToken = ctx.getString(R.string.MAPBOX_API_TOKEN);
         String url = "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-l+40681C(" + lon + "," + lat + ")/" + lon + "," + lat + ",17/400x400?access_token=" + apiToken;
-        System.out.println(url);
         return new URL(url);
     }
 }
