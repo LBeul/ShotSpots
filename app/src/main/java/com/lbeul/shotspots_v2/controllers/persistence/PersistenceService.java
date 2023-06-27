@@ -3,8 +3,6 @@ package com.lbeul.shotspots_v2.controllers.persistence;
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
