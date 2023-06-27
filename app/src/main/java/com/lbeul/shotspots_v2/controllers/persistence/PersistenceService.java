@@ -3,8 +3,8 @@ package com.lbeul.shotspots_v2.controllers.persistence;
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 public interface PersistenceService {
@@ -14,7 +14,7 @@ public interface PersistenceService {
      * @param db the database state to persist in the file system
      * @throws PersistenceServiceException if writing to filesystem failed
      */
-    void persistToFileSystem(FileOutputStream fileOut, InMemoryDatabase db) throws PersistenceServiceException;
+    void persistToFileSystem(OutputStream fileOut, InMemoryDatabase db) throws PersistenceServiceException;
 
     /**
      * Read local file and extract list of image data from it
@@ -22,5 +22,5 @@ public interface PersistenceService {
      * @return List of valid ImageData objects
      * @throws PersistenceServiceException if reading from filesystem failed
      */
-    List<ImageData> readFromFileSystem(FileInputStream fileIn) throws PersistenceServiceException;
+    List<ImageData> readFromFileSystem(InputStream fileIn) throws PersistenceServiceException;
 }

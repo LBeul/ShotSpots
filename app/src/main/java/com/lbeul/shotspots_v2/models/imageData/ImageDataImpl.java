@@ -8,48 +8,36 @@ import java.util.Date;
 import java.util.UUID;
 
 public class ImageDataImpl implements ImageData {
-    private final UUID id = UUID.randomUUID();
-    private final String stringifiedImageUri;
-    private double longitude;
-    private double latitude;
-    private Date creationTimeStamp;
-    private String cameraManufacturer;
-    private String cameraModel;
+    private UUID id;
+    private final String uriString;
+    private final double longitude;
+    private final double latitude;
+    private final Date creationTimeStamp;
+    private final String cameraManufacturer;
+    private final String cameraModel;
 
-
-    public ImageDataImpl(String stringifiedImageUri) {
-
-        // perform Data Extraction
-        // store data in class somewhere
-
-        this.stringifiedImageUri = stringifiedImageUri;
-
-        //this.location = location;
-    }
-
-    // setters
-    @Override
-    public void setLocation(double longitude, double latitude) {
+    public ImageDataImpl(String uriString, double longitude, double latitude, Date creationTimeStamp, String cameraManufacturer, String cameraModel) {
+        this.id = UUID.randomUUID();
+        this.uriString = uriString;
         this.longitude = longitude;
         this.latitude = latitude;
-    }
-
-    @Override
-    public void setCreationTimeStamp(Date creationTimeStamp) {
         this.creationTimeStamp = creationTimeStamp;
-    }
-
-    @Override
-    public void setCameraManufacturer(String cameraManufacturer) {
         this.cameraManufacturer = cameraManufacturer;
-    }
-
-    @Override
-    public void setCameraModel(String cameraModel) {
         this.cameraModel = cameraModel;
     }
 
-    // getters
+    /**
+     * Additional Constructor for setting a custom UUID
+     */
+    public ImageDataImpl(String uriString, double longitude, double latitude, Date creationTimeStamp, String cameraManufacturer, String cameraModel, UUID id) {
+        this.id = id;
+        this.uriString = uriString;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.creationTimeStamp = creationTimeStamp;
+        this.cameraManufacturer = cameraManufacturer;
+        this.cameraModel = cameraModel;
+    }
 
     @Override
     public UUID getId() {
@@ -63,7 +51,7 @@ public class ImageDataImpl implements ImageData {
 
     @Override
     public String getImageURI() {
-        return this.stringifiedImageUri;
+        return this.uriString;
     }
 
     @Override
