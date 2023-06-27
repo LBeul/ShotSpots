@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class ImageDataImpl implements ImageData {
-    private final UUID id;
+    private UUID id;
     private final String uriString;
     private final double longitude;
     private final double latitude;
@@ -18,6 +18,19 @@ public class ImageDataImpl implements ImageData {
 
     public ImageDataImpl(String uriString, double longitude, double latitude, Date creationTimeStamp, String cameraManufacturer, String cameraModel) {
         this.id = UUID.randomUUID();
+        this.uriString = uriString;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.creationTimeStamp = creationTimeStamp;
+        this.cameraManufacturer = cameraManufacturer;
+        this.cameraModel = cameraModel;
+    }
+
+    /**
+     * Additional Constructor for setting a custom UUID
+     */
+    public ImageDataImpl(String uriString, double longitude, double latitude, Date creationTimeStamp, String cameraManufacturer, String cameraModel, UUID id) {
+        this.id = id;
         this.uriString = uriString;
         this.longitude = longitude;
         this.latitude = latitude;
