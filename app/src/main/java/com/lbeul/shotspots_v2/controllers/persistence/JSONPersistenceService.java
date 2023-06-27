@@ -10,7 +10,9 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class JSONPersistenceService implements PersistenceService {
     }
 
     @Override
-    public void persistToFileSystem(FileOutputStream fileOut, InMemoryDatabase db) throws PersistenceServiceException {
+    public void persistToFileSystem(OutputStream fileOut, InMemoryDatabase db) throws PersistenceServiceException {
         List<ImageData> images = db.getAllImages();
         String imagesJson = gson.toJson(images);
         try {
@@ -37,7 +39,7 @@ public class JSONPersistenceService implements PersistenceService {
     }
 
     @Override
-    public List<ImageData> readFromFileSystem(FileInputStream fileIn) throws PersistenceServiceException {
+    public List<ImageData> readFromFileSystem(InputStream fileIn) throws PersistenceServiceException {
         StringBuilder sb = new StringBuilder();
         String line;
         try {
