@@ -10,5 +10,5 @@ public interface ImageDataExtractor {
      * @return ImageData of the analyzed file
      * @throws RuntimeException if there is no image at path, no geo location, no meta data
      */
-    ImageData extractDataFromImage() throws RuntimeException;
+    ImageData extractDataFromImage() throws ExtractorException;
 }
