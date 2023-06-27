@@ -25,13 +25,11 @@ public class NativeImageDataExtractor implements ImageDataExtractor {
     public NativeImageDataExtractor(AppCompatActivity activity, Uri imageUri) {
         this.resolver = activity.getContentResolver();
         this.imageUri = imageUri;
+        System.out.println(imageUri);
     }
 
     @Override
-    public ImageData extractDataFromImage() throws RuntimeException {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            throw new RuntimeException("SDK version is too old to run this.");
-        }
+    public ImageData extractDataFromImage() throws ExtractorException {
         Metadata metadata;
 
         Objects.requireNonNull(imageUri, "Image uri must not be null.");
@@ -39,7 +37,7 @@ public class NativeImageDataExtractor implements ImageDataExtractor {
         try (InputStream is = resolver.openInputStream(imageUri)) {
             metadata = ImageMetadataReader.readMetadata(is);
         } catch (IOException | ImageProcessingException e) {
-            throw new RuntimeException(e);
+            throw new ExtractorException(e.getMessage());
         }
 
         ExifSubIFDDirectory exifDirectory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);

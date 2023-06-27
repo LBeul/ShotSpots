@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lbeul.shotspots_v2.controllers.persistence.JSONPersistenceService;
 import com.lbeul.shotspots_v2.controllers.persistence.PersistenceService;
 import com.lbeul.shotspots_v2.controllers.persistence.PersistenceServiceException;
+import com.lbeul.shotspots_v2.views.map.MapActivity;
+import com.lbeul.shotspots_v2.views.upload.ImageUploadActivity;
 import com.lbeul.shotspots_v2.databinding.ActivityMainBinding;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.DatabaseException;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
 import com.lbeul.shotspots_v2.models.inMemoryDatabase.ListBasedInMemoryDatabase;
-import com.lbeul.shotspots_v2.views.upload.ImageUploadActivity;
-import com.lbeul.shotspots_v2.views.map.MapActivity;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
