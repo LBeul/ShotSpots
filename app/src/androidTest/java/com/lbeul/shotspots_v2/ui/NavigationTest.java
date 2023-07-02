@@ -1,14 +1,16 @@
-package com.lbeul.shotspots_v2;
+package com.lbeul.shotspots_v2.ui;
 import static androidx.test.espresso.Espresso.*;
 import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.*;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
 
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
+import com.lbeul.shotspots_v2.R;
 import com.lbeul.shotspots_v2.views.main.MainActivity;
 
 import org.junit.Rule;
@@ -24,7 +26,7 @@ public class NavigationTest {
 
     @Test
     public void shouldNavigateToMapActivityAndBack(){
-        onView(withId(R.id.textview)).check(matches(isDisplayed()));
+        onView(ViewMatchers.withId(R.id.textview)).check(matches(isDisplayed()));
         onView(withId(R.id.goToMapView)).perform(click());
         onView(withId(R.id.map)).check(matches(isDisplayed()));
         Espresso.pressBack();
