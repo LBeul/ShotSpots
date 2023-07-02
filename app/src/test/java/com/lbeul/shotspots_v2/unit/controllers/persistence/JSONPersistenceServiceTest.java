@@ -5,8 +5,8 @@ import com.lbeul.shotspots_v2.controllers.persistence.PersistenceService;
 import com.lbeul.shotspots_v2.controllers.persistence.PersistenceServiceException;
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
 import com.lbeul.shotspots_v2.models.imageData.ImageDataImpl;
-import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
-import com.lbeul.shotspots_v2.models.inMemoryDatabase.ListBasedInMemoryDatabase;
+import com.lbeul.shotspots_v2.models.database.InMemoryDatabase;
+import com.lbeul.shotspots_v2.models.database.ListBasedInMemoryDatabase;
 
 
 import static org.junit.Assert.*;

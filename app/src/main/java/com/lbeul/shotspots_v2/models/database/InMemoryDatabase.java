@@ -1,4 +1,4 @@
-package com.lbeul.shotspots_v2.models.inMemoryDatabase;
+package com.lbeul.shotspots_v2.models.database;
 
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
 

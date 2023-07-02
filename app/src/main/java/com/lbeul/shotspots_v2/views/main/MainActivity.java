@@ -15,9 +15,9 @@ import com.lbeul.shotspots_v2.controllers.persistence.PersistenceServiceExceptio
 import com.lbeul.shotspots_v2.views.map.MapActivity;
 import com.lbeul.shotspots_v2.views.upload.ImageUploadActivity;
 import com.lbeul.shotspots_v2.databinding.ActivityMainBinding;
-import com.lbeul.shotspots_v2.models.inMemoryDatabase.DatabaseException;
-import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
-import com.lbeul.shotspots_v2.models.inMemoryDatabase.ListBasedInMemoryDatabase;
+import com.lbeul.shotspots_v2.models.database.DatabaseException;
+import com.lbeul.shotspots_v2.models.database.InMemoryDatabase;
+import com.lbeul.shotspots_v2.models.database.ListBasedInMemoryDatabase;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

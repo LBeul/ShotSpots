@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
 import com.lbeul.shotspots_v2.models.imageData.ImageDataImpl;
-import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
+import com.lbeul.shotspots_v2.models.database.InMemoryDatabase;
 
 import java.io.BufferedReader;
 import java.io.IOException;

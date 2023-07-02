@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lbeul.shotspots_v2.R;
 import com.lbeul.shotspots_v2.models.imageData.ImageData;
-import com.lbeul.shotspots_v2.models.inMemoryDatabase.DatabaseException;
-import com.lbeul.shotspots_v2.models.inMemoryDatabase.InMemoryDatabase;
+import com.lbeul.shotspots_v2.models.database.DatabaseException;
+import com.lbeul.shotspots_v2.models.database.InMemoryDatabase;
 import com.lbeul.shotspots_v2.utils.MathUtil;
 
 import java.io.IOException;
