@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
     private void loadDatabase() {
         try (FileInputStream fileIn = openFileInput(dbDumpFileName)) {
             database.seed(persistenceService.readFromFileSystem(fileIn));
-            Toast.makeText(this, "Database loaded", Toast.LENGTH_SHORT).show();
             database.logContent();
         } catch (PersistenceServiceException | DatabaseException e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
