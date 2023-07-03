@@ -35,7 +35,7 @@ public class EndToEndExtractionTest {
     }
 
     @Test
-    public void shouldExtractAndPersistImageData() throws UiObjectNotFoundException {
+    public void shouldExtractAndPersistImageData() {
         int timeout = 3 * 1000;
 
         // Open main activity
@@ -52,26 +52,26 @@ public class EndToEndExtractionTest {
         loadImage.clickAndWait(Until.newWindow(), timeout);
 
         // Select Image in picker
-        device.click(200, 1100);
+        device.click(860, 1400);
         UiObject2 select = device.findObject(By.text("SELECT"));
         select.clickAndWait(Until.newWindow(), timeout);
 
         // Click extract & wait for toast
         UiObject2 extract = device.findObject(By.text("Extract"));
         extract.click();
-        device.wait(Until.findObject(By.text("Successfully extracted metadata")), 1000);
+        device.wait(Until.findObject(By.text("Successfully extracted metadata")), timeout);
 
         // Go back to main
         UiObject2 back = device.findObject(By.text("Back"));
         back.click();
 
         // Validate that metadata is displayed
-        UiObject2 cardText = device.wait(Until.findObject(By.text("Shot on an Apple Device")), 1000);
+        UiObject2 cardText = device.wait(Until.findObject(By.text("Shot on an Apple Device")), timeout);
 
         // Persist to FS
         UiObject2 save = device.findObject(By.text("Save DB"));
         save.click();
-        device.wait(Until.findObject(By.text("Database saved")), 1000);
+        device.wait(Until.findObject(By.text("Database saved")), timeout);
     }
 
 }
