@@ -2,6 +2,9 @@
 
 > Course Project for **Mobile Systems & Networks** at HTW Berlin.
 
+<img width="4127" alt="shotspots-screenshots" src="https://github.com/LBeul/ShotSpots/assets/37245841/671a7b68-56fa-4ea7-815b-67d18cd32f00">
+
+
 ## In order to setup...
 
 You have to create a resources file that contains the api key for mapbox under `res/values/api_keys.xml`:
